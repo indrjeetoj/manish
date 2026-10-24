@@ -1,0 +1,1268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Welcome to Allrounder — gaming videos, epic gameplay, challenges and entertainment.">
+  <title>ALLROUNDER | Gaming Creator</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #ff0000;
+      --primary-dark: #c90000;
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-light: #1c1c1c;
+      --text: #ffffff;
+      --muted: #a3a3a3;
+      --border: rgba(255, 255, 255, 0.09);
+      --nav-height: 76px;
+      --font-heading: "Orbitron", sans-serif;
+      --font-body: "Poppins", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 15px);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      color: var(--primary);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .section-title span {
+      color: var(--primary);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    /* Navbar */
+    .navbar {
+      height: var(--nav-height);
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.76);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--primary);
+      text-shadow: 0 0 18px #ff000066;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #d2d2d2;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .nav-subscribe {
+      padding: 10px 17px;
+      border: 1px solid var(--primary);
+      color: white !important;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .nav-subscribe:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      background: transparent;
+      color: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 90vh;
+      padding: calc(var(--nav-height) + 70px) 0 70px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 85% 45%, #ff000018, transparent 40%),
+        linear-gradient(125deg, #0a0a0a 45%, #151010 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.14;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to right, black, transparent);
+    }
+
+    .hero-content {
+      max-width: 780px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      background: #ff000010;
+      border: 1px solid #ff000055;
+      color: #ff7777;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge i {
+      font-size: 0.65rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.7rem, 7.5vw, 5.8rem);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+      text-shadow: 0 0 35px #ff000044;
+    }
+
+    .hero-description {
+      max-width: 590px;
+      color: #b5b5b5;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 23px;
+      border: 1px solid transparent;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 30px #ff000022;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 10px 35px #ff000044;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border-color: #555;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: #ff6666;
+    }
+
+    .hero-note {
+      color: #777;
+      font-size: 0.76rem;
+      margin-top: 28px;
+    }
+
+    .hero-note i {
+      color: var(--primary);
+      margin-right: 7px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-art {
+      min-height: 340px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle, #ff00001b, transparent 65%),
+        var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .about-art::before,
+    .about-art::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border: 1px solid #ff000066;
+      transform: rotate(45deg);
+    }
+
+    .about-art::after {
+      width: 180px;
+      height: 180px;
+      border-color: #ffffff22;
+      transform: rotate(25deg);
+    }
+
+    .about-monogram {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-heading);
+      font-size: clamp(5rem, 12vw, 8rem);
+      font-weight: 900;
+      letter-spacing: -12px;
+      text-shadow: 6px 5px 0 #ff0000;
+    }
+
+    .about-monogram span {
+      color: var(--primary);
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 19px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--primary);
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      margin-bottom: 5px;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .channel-id {
+      font-size: 0.78rem;
+      overflow-wrap: anywhere;
+      color: #ddd;
+      margin-top: 20px;
+    }
+
+    .channel-id span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Video feed */
+    .videos-section {
+      background: #0e0e0e;
+      border-block: 1px solid var(--border);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .video-card {
+      min-width: 0;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-7px);
+      border-color: #ff000077;
+      box-shadow: 0 15px 35px #00000050;
+    }
+
+    .video-thumb {
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      background: #202020;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .video-card:hover .video-thumb img {
+      transform: scale(1.07);
+    }
+
+    .video-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #00000020;
+    }
+
+    .video-play i {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      padding-left: 4px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 0 25px #ff000077;
+      transition: transform 0.25s;
+    }
+
+    .video-card:hover .video-play i {
+      transform: scale(1.12);
+    }
+
+    .video-details {
+      padding: 19px;
+    }
+
+    .video-details h3 {
+      font-size: 0.94rem;
+      font-weight: 600;
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.9em;
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .video-meta i {
+      color: var(--primary);
+    }
+
+    .feed-status {
+      text-align: center;
+      color: var(--muted);
+      padding: 25px 0;
+      font-size: 0.9rem;
+    }
+
+    .feed-status a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .feed-actions {
+      text-align: center;
+      margin-top: 35px;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-copy p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+      color: #ddd;
+      font-size: 0.9rem;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-detail i {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      background: #ff000014;
+      color: var(--primary);
+      border: 1px solid #ff000044;
+    }
+
+    .contact-form {
+      padding: 30px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #ddd;
+      font-size: 0.82rem;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: #0b0b0b;
+      color: white;
+      border: 1px solid #333;
+      outline: none;
+      padding: 13px 14px;
+      border-radius: 2px;
+      font-size: 0.88rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px #ff000018;
+    }
+
+    .form-group textarea {
+      min-height: 135px;
+      resize: vertical;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+    }
+
+    .form-status {
+      color: #ff7777;
+      font-size: 0.8rem;
+      margin-top: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px 0;
+      background: #060606;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    .footer-copy span {
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-links a {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: #ccc;
+      transition: color 0.25s, background 0.25s, transform 0.25s;
+    }
+
+    .social-links a:hover {
+      color: white;
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 500;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: 0.25s;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 18px; }
+      .about-grid, .contact-grid { gap: 35px; }
+      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-card:last-child { display: none; }
+      .footer-inner { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 700px) {
+      :root { --nav-height: 68px; }
+      .container { width: min(100% - 32px, 1120px); }
+      .section { padding: 75px 0; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 22px 24px 25px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(10, 10, 10, 0.97);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a {
+        display: block;
+        padding: 13px 0;
+      }
+      .nav-links .nav-subscribe {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .hero {
+        min-height: 90vh;
+        padding-top: calc(var(--nav-height) + 55px);
+      }
+      .hero h1 { letter-spacing: -1.5px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-art { min-height: 280px; }
+      .about-copy { text-align: center; }
+      .stats-grid { max-width: 450px; margin-inline: auto; }
+      .channel-id { text-align: left; }
+      .video-grid { grid-template-columns: 1fr; }
+      .video-card:last-child { display: block; }
+      .contact-form { padding: 22px; }
+      .footer-inner { justify-content: center; text-align: center; }
+      .footer-copy { flex-basis: 100%; order: 3; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+      .stats-grid { gap: 7px; }
+      .stat-card { padding: 14px 6px; }
+      .stat-card strong { font-size: 1.15rem; }
+      .stat-card span { font-size: 0.65rem; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a href="#home" class="logo">ALL<span>ROUNDER</span></a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation" aria-expanded="false"
+        aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a class="nav-subscribe"
+             href="https://www.youtube.com/channel/UCWx1iOsUyOQQZFxteB2rDkw"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-youtube"></i> Subscribe
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content reveal">
+          <div class="hero-badge">
+            <i class="fa-solid fa-circle"></i>
+            WELCOME TO MY GAMING WORLD
+          </div>
+
+          <h1>PLAY HARD.<br>STAY <span>LEGENDARY.</span></h1>
+
+          <p class="hero-description">
+            Welcome to Allrounder — your destination for gaming,
+            epic moments, exciting challenges, and entertainment.
+            The game starts here!
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn btn-primary"
+               href="https://www.youtube.com/channel/UCWx1iOsUyOQQZFxteB2rDkw"
+               target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-youtube"></i> Visit My Channel
+            </a>
+            <a class="btn btn-outline" href="#videos">
+              <i class="fa-solid fa-play"></i> Latest Videos
+            </a>
+          </div>
+
+          <p class="hero-note">
+            <i class="fa-solid fa-gamepad"></i>
+            GAMEPLAY · CHALLENGES · ENTERTAINMENT
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-art reveal" aria-label="Allrounder AR logo">
+          <div class="about-monogram">A<span>R</span></div>
+        </div>
+
+        <div class="about-copy reveal">
+          <p class="section-label">GET TO KNOW ME</p>
+          <h2 class="section-title">ABOUT <span>ALLROUNDER</span></h2>
+
+          <p>
+            What's up, gamers! Welcome to Allrounder, a channel for
+            gaming fans who love great gameplay, fun challenges, and
+            memorable moments.
+          </p>
+
+          <p>
+            Explore the latest uploads, discover new adventures, and
+            join the community. Subscribe and become part of the journey!
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <strong id="videoCount">---</strong>
+              <span>VIDEOS</span>
+            </div>
+            <div class="stat-card">
+              <strong id="subscriberCount">--</strong>
+              <span>SUBSCRIBERS</span>
+            </div>
+            <div class="stat-card">
+              <strong id="viewCount">--</strong>
+              <span>TOTAL VIEWS</span>
+            </div>
+          </div>
+
+          <p class="channel-id">
+            <span>CHANNEL ID:</span>
+            UCWx1iOsUyOQQZFxteB2rDkw
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest YouTube videos -->
+    <section class="section videos-section" id="videos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-label">FRESH FROM THE CHANNEL</p>
+          <h2 class="section-title">LATEST <span>VIDEOS</span></h2>
+          <p class="section-intro">
+            Check out the newest uploads from Allrounder.
+            Pick a video and jump straight into the action.
+          </p>
+        </div>
+
+        <div class="video-grid" id="videoGrid" aria-live="polite">
+          <p class="feed-status">Loading the latest videos...</p>
+        </div>
+
+        <p class="feed-status" id="feedStatus"></p>
+
+        <div class="feed-actions">
+          <a class="btn btn-outline"
+             href="https://www.youtube.com/channel/UCWx1iOsUyOQQZFxteB2rDkw"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-youtube"></i> Explore All Videos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="section-label">LET'S CONNECT</p>
+          <h2 class="section-title">GET IN <span>TOUCH</span></h2>
+
+          <p>
+            Have a collaboration idea, gaming suggestion, or question?
+            Send a message. I'd love to hear from you.
+          </p>
+
+          <div class="contact-detail">
+            <i class="fa-brands fa-youtube"></i>
+            <span>youtube.com/@allrounder</span>
+          </div>
+
+          <div class="contact-detail">
+            <i class="fa-solid fa-gamepad"></i>
+            <span>Gaming · Content · Community</span>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text"
+                placeholder="Enter your name" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email"
+                placeholder="you@example.com" required maxlength="200">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text"
+              placeholder="What is this about?" required maxlength="150">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message"
+              placeholder="Write your message here..." required maxlength="3000"></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#home" class="logo">ALL<span>ROUNDER</span></a>
+
+      <p class="footer-copy">
+        © <span id="year"></span> Allrounder. Made for gamers.
+      </p>
+
+      <div class="social-links">
+        <a href="https://www.youtube.com/channel/UCWx1iOsUyOQQZFxteB2rDkw"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.instagram.com/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://discord.com/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Discord">
+          <i class="fa-brands fa-discord"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script>
+    "use strict";
+
+    // Channel configuration
+    const CHANNEL_ID = "UCWx1iOsUyOQQZFxteB2rDkw";
+    const CHANNEL_URL =
+      `https://www.youtube.com/channel/${CHANNEL_ID}`;
+
+    // RSS2JSON converts the public YouTube RSS feed into JSON.
+    // This is a public feed; it does not provide subscriber/view totals.
+    const RSS_URL =
+      `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+    const FEED_API =
+      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+
+    // Navbar / mobile menu
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function closeMenu() {
+      navLinks.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+      menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      document.body.classList.toggle("menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 700) closeMenu();
+    });
+
+    // Copyright year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Fetch and render the latest three videos.
+    // Video ID is parsed from the RSS item's guid, as requested.
+    const videoGrid = document.getElementById("videoGrid");
+    const feedStatus = document.getElementById("feedStatus");
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    function parseVideoId(guid) {
+      if (!guid) return null;
+
+      try {
+        const parsed = new URL(guid);
+        const videoId = parsed.searchParams.get("v");
+        if (videoId) return videoId;
+
+        // Common YouTube RSS GUID format:
+        // yt:video:VIDEO_ID
+        if (parsed.hostname.includes("youtube.com") ||
+            parsed.hostname.includes("youtu.be")) {
+          const parts = parsed.pathname.split("/").filter(Boolean);
+          return parts.length ? parts[parts.length - 1] : null;
+        }
+      } catch {
+        // The GUID can be a non-URL string such as yt:video:VIDEO_ID.
+      }
+
+      const match = String(guid).match(/(?:yt:video:|v=)([A-Za-z0-9_-]{11})/);
+      return match ? match[1] : null;
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      if (Number.isNaN(date.getTime())) return "Latest upload";
+
+      return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function renderVideos(items) {
+      const videos = items
+        .map((item) => {
+          // Parse the video ID from guid first.
+          const videoId = parseVideoId(item.guid);
+          return { item, videoId };
+        })
+        .filter(({ videoId }) => videoId)
+        .slice(0, 3);
+
+      if (!videos.length) {
+        throw new Error("No valid video IDs found in the channel feed.");
+      }
+
+      videoGrid.innerHTML = videos.map(({ item, videoId }) => {
+        const title = escapeHTML(item.title || "Untitled video");
+        const date = escapeHTML(formatDate(item.pubDate));
+        const videoUrl =
+          `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
+        const thumbnail =
+          `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`;
+
+        return `
+          <article class="video-card reveal visible">
+            <a href="${videoUrl}" target="_blank" rel="noopener noreferrer"
+               aria-label="Watch ${title} on YouTube">
+              <div class="video-thumb">
+                <img src="${thumbnail}" alt="${title}" loading="lazy"
+                     onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/mqdefault.jpg';">
+                <div class="video-play">
+                  <i class="fa-solid fa-play" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="video-details">
+                <h3>${title}</h3>
+                <div class="video-meta">
+                  <span><i class="fa-brands fa-youtube"></i> Allrounder</span>
+                  <span>${date}</span>
+                </div>
+              </div>
+            </a>
+          </article>`;
+      }).join("");
+
+      feedStatus.textContent = "";
+    }
+
+    async function loadLatestVideos() {
+      try {
+        const response = await fetch(FEED_API);
+
+        if (!response.ok) {
+          throw new Error(`Feed request failed (${response.status}).`);
+        }
+
+        const data = await response.json();
+
+        if (data.status !== "ok" || !Array.isArray(data.items)) {
+          throw new Error("The video feed could not be read.");
+        }
+
+        renderVideos(data.items);
+      } catch (error) {
+        console.error("YouTube feed error:", error);
+
+        videoGrid.innerHTML = `
+          <p class="feed-status">
+            Videos couldn't be loaded right now. Please visit the channel directly.
+          </p>`;
+
+        feedStatus.innerHTML = `
+          <a href="${CHANNEL_URL}" target="_blank" rel="noopener noreferrer">
+            Open the Allrounder YouTube channel
+          </a>`;
+      }
+    }
+
+    loadLatestVideos();
+
+    // Subscriber count, total views and full channel video count
+    // are not included in YouTube's public RSS feed. Display honest
+    // placeholders until a YouTube Data API backend is connected.
+    document.getElementById("videoCount").textContent = "LIVE";
+    document.getElementById("subscriberCount").textContent = "—";
+    document.getElementById("viewCount").textContent = "—";
+
+    // Contact form: opens a prefilled email draft.
+    // Replace the placeholder email below with your real email address.
+    const CONTACT_EMAIL = "your-email@example.com";
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!contactForm.reportValidity()) return;
+
+      const formData = new FormData(contactForm);
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const subject = String(formData.get("subject") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+
+      if (CONTACT_EMAIL === "your-email@example.com") {
+        formStatus.textContent =
+          "Setup needed: replace your-email@example.com in the JavaScript with your email address.";
+        return;
+      }
+
+      const body =
+        `Name: ${name}\nEmail: ${email}\n\n${message}`;
+
+      const mailto =
+        `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      formStatus.textContent =
+        "Opening your email app. Please send the message there.";
+
+      window.location.href = mailto;
+    });
+
+    // Back-to-top button
+    const toTop = document.getElementById("toTop");
+
+    window.addEventListener("scroll", () => {
+      toTop.classList.toggle("show", window.scrollY > 500);
+    }, { passive: true });
+
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Reveal elements as they enter the viewport
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
